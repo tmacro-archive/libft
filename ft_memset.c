@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 14:00:54 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 14:15:01 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/05 22:30:27 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	*ft_memset(void *s, int c, size_t n)
 	pos = s;
 	while (n--)
 		*pos++ = (unsigned char)c;
-	return(s);
+	return (s);
 }

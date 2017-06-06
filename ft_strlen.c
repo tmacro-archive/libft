@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 14:32:16 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 15:13:01 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/05 22:29:34 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(char *str)
 	int	len;
 
 	len = 0;
-	while(*str++)
+	while (*str++)
 		len++;
 	return (len);
 }

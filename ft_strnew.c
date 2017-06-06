@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 14:20:17 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 15:15:01 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/05 22:31:27 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ char	*ft_strnew(size_t size)
 	ft_bzero(freshmeat, size + sizeof(char));
 	return (freshmeat);
 }
-

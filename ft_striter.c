@@ -6,14 +6,14 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 21:07:32 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 21:21:22 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/05 22:27:57 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "stdio.h"
 
-void ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
 	while (*s)
 		f(s++);

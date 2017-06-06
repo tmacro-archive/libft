@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 21:27:16 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 21:57:10 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/05 22:28:53 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 		return (NULL);
 	begin = freshmeat;
 	pos = (char*)s;
-	while(*pos)
+	while (*pos)
 		*freshmeat++ = f(*pos++);
 	return (begin);
 }

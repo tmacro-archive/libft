@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 09:11:05 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 21:53:40 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/05 22:30:05 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ void	*ft_memalloc(size_t size)
 	ft_bzero(fresh, size);
 	return (fresh);
 }
-

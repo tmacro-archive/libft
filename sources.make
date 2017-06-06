@@ -6,7 +6,7 @@
 #    By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/05 10:34:05 by tmckinno          #+#    #+#              #
-#    Updated: 2017/06/05 21:35:08 by tmckinno         ###   ########.fr        #
+#    Updated: 2017/06/05 22:23:17 by tmckinno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,5 +21,7 @@ SRC +=	ft_memalloc.c \
 	ft_memccpy.c \
 	ft_striter.c \
 	ft_striteri.c \
-	ft_strmap.c 
+	ft_strmap.c \
+	ft_strmapi.c
+
 OBJ = $(SRC:.c=.o)
