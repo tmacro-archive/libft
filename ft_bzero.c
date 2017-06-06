@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 09:11:05 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 21:53:40 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/05 14:05:20 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/05 14:07:56 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	void	*fresh;
-
-	fresh = (void*)malloc(sizeof(void) * size);
-	if (fresh == NULL)
-		return (NULL);
-	ft_bzero(fresh, size);
-	return (fresh);
+	ft_memset(s, '\0', n);
 }
-

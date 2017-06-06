@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 09:11:05 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 21:53:40 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/05 21:27:16 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/05 21:57:10 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	void	*fresh;
+	char	*freshmeat;
+	char	*begin;
+	char	*pos;
 
-	fresh = (void*)malloc(sizeof(void) * size);
-	if (fresh == NULL)
+	freshmeat = (char*)ft_strnew((size_t)ft_strlen((char*)s));
+	if (freshmeat == (NULL))
 		return (NULL);
-	ft_bzero(fresh, size);
-	return (fresh);
+	begin = freshmeat;
+	pos = (char*)s;
+	while(*pos)
+		*freshmeat++ = f(*pos++);
+	return (begin);
 }
-

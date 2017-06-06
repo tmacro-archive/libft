@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 09:11:05 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 21:53:40 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/05 14:20:17 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/05 15:15:01 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+char	*ft_strnew(size_t size)
 {
-	void	*fresh;
+	char	*freshmeat;
 
-	fresh = (void*)malloc(sizeof(void) * size);
-	if (fresh == NULL)
+	freshmeat = ft_memalloc(size + sizeof(char));
+	if (freshmeat == NULL)
 		return (NULL);
-	ft_bzero(fresh, size);
-	return (fresh);
+	ft_bzero(freshmeat, size + sizeof(char));
+	return (freshmeat);
 }
 
