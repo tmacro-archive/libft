@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 09:13:53 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/07 11:18:31 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/08 21:06:59 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,15 @@
 
 # include <string.h>
 # include <stdlib.h>
+#define NULL_GUARD(val)  if (val == NULL) return NULL;
+#define ERR_CHECK(val, err) if (val == err) return NULL;
 
+typedef struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 void	*ft_memset(void *s, int c, size_t n);
@@ -50,6 +58,15 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isprint(int c);
 int		ft_isascii(int c);
+int		ft_isws(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_strequ(char const *s1, char const *s2);
+int		ft_strnequ(char const *s1, char const *s2, size_t n);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s);
+char	**ft_strsplit(char const *s, char c);
+void	**ft_aralloc(size_t elems);
+char	*ft_ctrim(char const *s, char c);
 #endif
