@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 09:13:53 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/08 21:06:59 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/09 10:23:21 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <string.h>
 # include <stdlib.h>
+# include <unistd.h>
+
 #define NULL_GUARD(val)  if (val == NULL) return NULL;
 #define ERR_CHECK(val, err) if (val == err) return NULL;
 
@@ -69,4 +71,14 @@ char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
 void	**ft_aralloc(size_t elems);
 char	*ft_ctrim(char const *s, char c);
+int		ft_atoi(char const *s);
+char	*ft_itoa(int n);
+void	ft_putchar(char c);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr(char const *s);
+void	ft_putstr_fd(char const *s, int fd);
+void	ft_putendl(char const *s);
+void	ft_putendl_fd(char const *s, int fd);
+void	ft_putnbr(int n);
+void	ft_putnbr_fd(int n, int fd);
 #endif

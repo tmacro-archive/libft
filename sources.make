@@ -6,7 +6,7 @@
 #    By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/05 10:34:05 by tmckinno          #+#    #+#              #
-#    Updated: 2017/06/08 19:58:08 by tmckinno         ###   ########.fr        #
+#    Updated: 2017/06/09 10:25:57 by tmckinno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,16 @@ SRC +=	ft_memalloc.c \
 	ft_isws.c \
 	ft_strtrim.c \
 	ft_strsplit.c \
-	ft_ctrim.c
+	ft_ctrim.c \
+	ft_atoi.c \
+	ft_itoa.c \
+	ft_putchar.c \
+	ft_putchar_fd.c \
+	ft_putstr.c \
+	ft_putstr_fd.c \
+	ft_putendl.c \
+	ft_putendl_fd.c \
+	ft_putnbr.c \
+	ft_putnbr_fd.c
 
 OBJ = $(SRC:.c=.o)
