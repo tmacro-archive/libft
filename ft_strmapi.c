@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 22:19:10 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 22:30:43 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 13:14:30 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*pos;
 	unsigned int	index;
 
-	freshmeat = (char*)ft_strnew((size_t)ft_strlen((char*)s));
-	if (freshmeat == (NULL))
-		return (NULL);
+	NULL_GUARD(f);
+	NULL_GUARD((freshmeat = (char*)ft_strnew((size_t)ft_strlen((char*)s))));
 	begin = freshmeat;
-	pos = (char*)s;
+	NULL_GUARD((pos = (char*)s));
 	index = 0;
 	while (*pos)
 		*freshmeat++ = f(index++, *pos++);

@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 21:42:42 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/09 09:15:45 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 12:36:08 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(char const *s)
 {
-	long	res;
-	int		sign;
-	char	*pos;
+	intmax_t	res;
+	int			sign;
+	char		*pos;
 
 	pos = (char*)s;
 	sign = 1;
@@ -34,7 +34,5 @@ int	ft_atoi(char const *s)
 		else
 			break ;
 	res *= sign;
-	if (res > 2147483647 || res < -2147483648)
-		return (-1);
-	return (res);
+	return ((int)res);
 }

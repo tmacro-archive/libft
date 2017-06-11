@@ -2,3 +2,5 @@ TODO
 *.o
 *.sw*
 *.un*
+libft.a
+*test*

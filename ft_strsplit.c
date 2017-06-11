@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 16:14:32 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/08 21:17:03 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 13:17:02 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,26 @@ static int	ft_splitcnt(char const *s, char c)
 
 char		**ft_strsplit(char const *s, char c)
 {
-	int		len;
-	char	*pos;
 	char	**results;
 	char	**rpos;
+	char	*pos;
+	int		len;
 
-	pos = ft_ctrim(s, c) - 1;
-	ERR_CHECK(ft_splitcnt(s, c), -1);
-	results = (char**)ft_memalloc(ft_splitcnt(s, c) * sizeof(char*));
+	NULL_GUARD((pos = (char*)s));
+	ERR_CHECK((len = ft_splitcnt(s, c) + 1), -1);
+	NULL_GUARD((results = (char**)ft_memalloc(len * sizeof(char*))));
 	rpos = results;
-	len = 0;
-	while (*++pos)
+	while (*pos)
 	{
-		if (*pos == c && len > 0)
+		if (*pos != c)
 		{
-			*rpos++ = ft_strsub(pos - len, 0, len);
-			NULL_GUARD(*(rpos - 1));
-			len = 0;
+			NULL_GUARD((*rpos = ft_strnew_d(pos, c)));
+			pos += ft_strlen(*rpos);
+			rpos++;
 		}
-		len++;
-		while (*pos == c)
+		else
 			pos++;
 	}
-	if (len > 0)
-		*rpos = ft_strsub(pos - len, 0, len);
+	*rpos = 0;
 	return (results);
 }

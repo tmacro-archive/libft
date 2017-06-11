@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstapp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/08 15:17:19 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/11 13:18:19 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/09 18:14:32 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/11 12:37:03 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+void	ft_lstapp(t_list **l, t_list *new)
 {
-	char	*freshmeat;
-	char	*pos1;
-	char	*pos2;
-	size_t	len;
+	t_list	*last;
 
-	len = 0;
-	NULL_GUARD((pos1 = (char*)s));
-	pos2 = (char*)s;
-	while (ft_isws(*pos1))
-		pos1++;
-	while (*pos2)
-		pos2++;
-	pos2--;
-	while (ft_isws(*pos2))
-		pos2--;
-	len = pos2 - pos1 + 1;
-	if (pos2 < pos1)
-		return (ft_strnew(0));
-	NULL_GUARD((freshmeat = ft_strnew(len)));
-	ft_strncpy(freshmeat, pos1, len);
-	return (freshmeat);
+	last = ft_lstlast(*l);
+	if (last == NULL)
+		*l = new;
+	else
+		last->next = new;
 }

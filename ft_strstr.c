@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 09:31:10 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/07 11:10:23 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 12:14:14 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strstr(const char *s1, const char *s2)
 
 	if (!*s2)
 		return ((char*)s1);
-	len = ft_strlen((char*)s2) - 1;
+	len = ft_strlen((char*)s2);
 	pos = (char *)s1;
 	while (*pos)
 		if (ft_strncmp(pos, (char*)s2, len) != 0)

@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 09:55:31 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 20:47:30 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 13:05:34 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_memdel(void **ap)
 {
-	free(*ap);
-	*ap = NULL;
+	if (ap != NULL)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }

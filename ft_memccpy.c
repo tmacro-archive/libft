@@ -6,29 +6,25 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 15:20:27 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 22:28:34 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 12:41:24 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
+void	*ft_memccpy(void *s1, void const *s2, int c, size_t n)
 {
-	unsigned char	*src;
-	size_t			len;
+	void		*pos;
+	size_t		len;
 
-	len = 0;
-	src = (unsigned char*)s2;
-	while (len < n)
-	{
-		len++;
-		if ((unsigned char)*src == (unsigned char)c)
-			break ;
-		src++;
-	}
+	ERR_CNR(n, 0, NULL);
+	pos = ft_memchr(s2, c, n);
+	if (pos == NULL)
+		len = n;
+	else
+		len = ++pos - s2;
 	ft_memcpy(s1, s2, len);
-	if (len == n)
-		return (NULL);
-	return (s1 + len);
+	if (pos != NULL)
+		return (s1 + len);
+	return (NULL);
 }

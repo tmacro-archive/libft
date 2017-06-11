@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 09:31:10 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/07 11:09:24 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 12:33:40 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 
 	if (!*s2)
 		return ((char*)s1);
-	len = ft_strlen((char*)s2) - 1;
+	len = ft_strlen((char*)s2);
 	pos = (char *)s1;
-	while (*pos && n--)
+	while (n && *pos)
 	{
 		if (len > n)
 			break ;
-		if (ft_strncmp(pos, (char*)s2, len) != 0)
-			pos++;
-		else
+		if (ft_strncmp(pos, (char*)s2, len) == 0)
 			return (pos);
+		else
+			pos++;
+		n--;
 	}
 	return (NULL);
 }

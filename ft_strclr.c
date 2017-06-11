@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 14:36:42 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 14:40:52 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/06/11 13:22:59 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	ft_strclr(char *s)
 {
 	int	len;
 
-	len = ft_strlen(s);
-	ft_bzero(s, len);
+	if (s != NULL)
+	{
+		len = ft_strlen(s);
+		ft_bzero(s, len);
+	}
 }

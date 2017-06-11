@@ -6,7 +6,7 @@
 #    By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/05 09:30:29 by tmckinno          #+#    #+#              #
-#    Updated: 2017/06/05 21:49:51 by tmckinno         ###   ########.fr        #
+#    Updated: 2017/06/09 14:01:52 by tmckinno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ include sources.make
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(SRC)
-	ar -cvq $(NAME) $(OBJ)
+	ar -rc $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
