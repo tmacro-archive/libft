@@ -6,7 +6,7 @@
 #    By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/05 09:30:29 by tmckinno          #+#    #+#              #
-#    Updated: 2017/06/21 18:16:56 by tmckinno         ###   ########.fr        #
+#    Updated: 2017/06/30 12:47:19 by tmckinno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,17 +81,21 @@ SRC +=	ft_memalloc.c \
 		ft_lstpush.c \
 		ft_putnstr.c
 
-OBJ = $(SRC:.c=.o)
-$(NAME): $(OBJ)
+OBJ = $(SRC:%.c=%.o)
+
+all: $(NAME) 
+
+$(OBJ): $(SRC)
 	$(CC) $(CFLAGS) $(SRC)
-	ar -rc $(NAME) $(OBJ)
+
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean:	clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean $(NAME)
 
-all: $(NAME) 
