@@ -6,7 +6,7 @@
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 09:13:53 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/11 13:22:14 by tmckinno         ###   ########.fr       */
+/*   Updated: 2017/07/01 14:44:26 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 # define NULL_GUARD(val)  if (val == NULL) return NULL
-# define NULL_GUARD_NR if (val == NULL) return
+# define NULL_GUARD_NR(val) if (val == NULL) return
 # define ERR_CHECK(val, err) if (val == err) return NULL
 # define ERR_CNR(val, err, ret) if (val == err) return (ret)
 
