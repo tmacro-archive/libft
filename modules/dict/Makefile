@@ -10,36 +10,47 @@
 #                                                                              #
 # **************************************************************************** #
 
-include module.mak
-
 ECHO	= @echo
 CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
+SRCDIR	= srcs
 OBJDIR	= build
-INCLUDE	= -I ./
+OUTPUT	= libs
+INCLUDE	= -I includes
+
+include module.mak
 
 OBJ		= $(SRC:%.c=$(OBJDIR)/%.o)
 
 .PHONY	= all clean fclean re deps
 
-all: $(NAME)
+all: $(OUTPUT)/$(NAME)
 
-$(NAME): $(OBJ)
-	$(ECHO) :: :: Building archive $(NAME)
-	@ar rcs $(NAME) $(OBJ)
+$(OUTPUT)/$(NAME): | $(OUTPUT) $(OBJ)
+	$(ECHO) :: :: Building archive $(OUTPUT)/$(NAME)
+	@ar rcs $(OUTPUT)/$(NAME) $(OBJ)
 
 $(OBJ):  | build
 
 build:
 	@mkdir -p $@
 
-$(OBJDIR)/%.o: %.c
+$(OUTPUT):
+ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
+	@mkdir -p $@
+endif
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	@rm -rf $(OBJDIR)
 
 fclean: clean
-	@rm -f $(NAME)
+ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
+	rm -rf $(OUTPUT)
+else
+	rm -f $(OUTPUT)/$(NAME)
+endif
 
 re: fclean all

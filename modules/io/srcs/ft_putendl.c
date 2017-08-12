@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 14:54:40 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 17:40:06 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/09 10:13:34 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/09 10:14:14 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libio.h"
 
-void	*ft_memcpy(void *s1, const void *s2, size_t n)
+void	ft_putendl(char const *s)
 {
-	unsigned char	*dest;
-	unsigned char	*src;
-
-	dest = (unsigned char*)s1;
-	src = (unsigned char*)s2;
-	while (n-- != 0)
-		*dest++ = *src++;
-	return (s1);
+	ft_putendl_fd(s, 1);
 }

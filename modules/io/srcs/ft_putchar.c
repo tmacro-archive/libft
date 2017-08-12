@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/09 17:32:21 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/11 12:38:38 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/09 10:11:42 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/09 10:28:09 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libio.h"
 
-size_t	ft_lstlen(t_list *l)
+void	ft_putchar(char c)
 {
-	ERR_CNR(l, NULL, 0);
-	return (1 + ft_lstlen(l->next));
+	ft_putchar_fd(c, 1);
 }

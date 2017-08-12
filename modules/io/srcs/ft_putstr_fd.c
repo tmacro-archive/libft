@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/09 15:13:21 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/07/01 14:45:03 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/09 10:06:33 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/09 10:21:49 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libio.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+void	ft_putstr_fd(char const *s, int fd)
 {
-	NULL_GUARD_NR(alst);
-	del((*alst)->content, (*alst)->content_size);
-	ft_memdel((void**)alst);
+	char	*pos;
+
+	pos = (char*)s;
+	while (*pos)
+	{
+		ft_putchar_fd(*pos, fd);
+		pos++;
+	}
 }

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/09 18:17:56 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/11 12:38:20 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/09 10:03:45 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/09 14:16:37 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libio.h"
 
-t_list	*ft_lstlast(t_list *l)
+void	ft_putchar_fd(char c, int fd)
 {
-	NULL_GUARD(l);
-	if (l->next)
-		return (ft_lstlast(l->next));
-	return (l);
+	write(fd, &c, 1);
 }

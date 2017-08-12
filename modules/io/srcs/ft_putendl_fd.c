@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/09 10:14:21 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/09 10:15:14 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/09 10:08:46 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/09 10:16:18 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libio.h"
 
-void	ft_putnbr(int n)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	ft_putnbr_fd(n, 1);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

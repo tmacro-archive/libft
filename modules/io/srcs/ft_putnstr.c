@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpop.c                                        :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/09 18:11:53 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/30 14:30:24 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/10 13:56:57 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/11 12:42:14 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libio.h"
 
-t_list	*ft_lstpop(t_list **l)
+void	ft_putnstr(char *s, size_t n)
 {
-	t_list	*tmp;
-
-	tmp = *l;
-	if (tmp)
-		*l = tmp->next;
-	return (tmp);
+	while (n--)
+		ft_putchar(*s++);
 }

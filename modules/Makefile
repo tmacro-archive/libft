@@ -10,47 +10,59 @@
 #                                                                              #
 # **************************************************************************** #
 
-ECHO	= @echo
-CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
-SRCDIR	= srcs
-OBJDIR	= build
-OUTPUT	= libs
-INCLUDE	= -I includes
+NAME	= libmcro.a
 
-include module.mak
-
-OBJ		= $(SRC:%.c=$(OBJDIR)/%.o)
+ECHO	=	@echo
+CC		= 	gcc
+CFLAGS	= 	-Wall -Werror -Wextra -g
+INCLUDE	= 	-I includes
+LIBDIR	=	libs
+MODULES	=	clct \
+			mem \
+			io
+			# str \
+			# util \
+			# dict
+LIBS	=	$(addprefix $(LIBDIR)/lib, $(MODULES:%=%.a)) 
+SRCS	= 	$(addprefix $(LIBDIR)/, $(SRC))
+OBJ		= 	$(SRC:%.c=$(OBJDIR)/%.o)
 
 .PHONY	= all clean fclean re deps
+.PHONY := $(MODULES)
 
-all: $(OUTPUT)/$(NAME)
 
-$(OUTPUT)/$(NAME): | $(OUTPUT) $(OBJ)
-	$(ECHO) :: :: Building archive $(OUTPUT)/$(NAME)
-	@ar rcs $(OUTPUT)/$(NAME) $(OBJ)
+all: $(NAME)
+
+$(NAME): $(LIBS)
+	$(ECHO) -e "save\nend" >> $(NAME).mri
+	ar -M < $(NAME).mri
 
 $(OBJ):  | build
 
 build:
 	@mkdir -p $@
 
-$(OUTPUT):
-ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
-	@mkdir -p $@
-endif
+mri:
+	@echo create $(NAME) > $(NAME).mri
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(LIBDIR)/lib%.a: ./% | mri
+ifeq (0, $(shell [[ -L ./$</libs ]] && echo 1 || echo 0))
+	# ln -s ../libs ./$</libs
+endif
+	@make -C $<
+	echo addlib $(LIBDIR)/lib$<.a >> $(NAME).mri
 
 clean:
-	@rm -rf $(OBJDIR)
+	@rm -f $(NAME).mri
+	@for mod in $(MODULES); do \
+		make -sC $$mod clean ; \
+	done
 
 fclean: clean
-ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
-	@rm -rf $(OUTPUT)
-else
-	@rm -f $(OUTPUT)/$(NAME)
-endif
+	@rm -f $(NAME)
+	@rm -f $(NAME).mri
+	@for mod in $(MODULES); do \
+		make -sC $$mod clean ; \
+	done
 
 re: fclean all

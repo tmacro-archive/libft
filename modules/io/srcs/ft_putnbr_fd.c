@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 09:11:05 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/05 22:30:05 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/09 10:10:18 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/11 12:50:54 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libio.h"
 
-void	*ft_memalloc(size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	void	*fresh;
+	char	c;
 
-	fresh = (void*)malloc(sizeof(void) * size);
-	if (fresh == NULL)
-		return (NULL);
-	ft_bzero(fresh, size);
-	return (fresh);
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	c = '\0';
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	else
+	{
+		c = (n % 10) + 48;
+		n /= 10;
+	}
+	if (n > 0)
+		ft_putnbr_fd(n, fd);
+	if (c)
+		ft_putchar_fd(c, fd);
 }
