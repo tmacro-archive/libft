@@ -48,9 +48,9 @@ clean:
 
 fclean: clean
 ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
-	rm -rf $(OUTPUT)
+	@rm -rf $(OUTPUT)
 else
-	rm -f $(OUTPUT)/$(NAME)
+	@rm -f $(OUTPUT)/$(NAME)
 endif
 
 re: fclean all

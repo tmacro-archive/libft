@@ -6,7 +6,7 @@
 #    By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/23 11:38:53 by tmckinno          #+#    #+#              #
-#    Updated: 2017/08/06 23:01:33 by tmckinno         ###   ########.fr        #
+#    Updated: 2017/08/12 13:46:07 by tmckinno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,9 @@ OBJ		= 	$(SRC:%.c=$(OBJDIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(LIBS)
-	$(ECHO) -e "save\nend" >> $(NAME).mri
-	ar -M < $(NAME).mri
+#	$(ECHO) -e "save\nend" >> $(NAME).mri
+	ar -rcT $(NAME) $(LIBS)
+#	ar -M < $(NAME).mri
 
 $(OBJ):  | build
 
@@ -45,12 +46,12 @@ build:
 mri:
 	@echo create $(NAME) > $(NAME).mri
 
-$(LIBDIR)/lib%.a: ./% | mri
+$(LIBDIR)/lib%.a: ./% 
 ifeq (0, $(shell [[ -L ./$</libs ]] && echo 1 || echo 0))
-	# ln -s ../libs ./$</libs
+	#ln -s ../libs ./$</libs
 endif
 	@make -C $<
-	echo addlib $(LIBDIR)/lib$<.a >> $(NAME).mri
+#	echo addlib $(LIBDIR)/lib$<.a >> $(NAME).mri
 
 clean:
 	@rm -f $(NAME).mri
