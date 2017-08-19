@@ -6,7 +6,7 @@
 #    By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/23 11:38:53 by tmckinno          #+#    #+#              #
-#    Updated: 2017/08/12 13:46:07 by tmckinno         ###   ########.fr        #
+#    Updated: 2017/08/13 12:21:11 by tmckinno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBDIR	=	libs
 MODULES	=	clct \
 			mem \
 			io
-			# str \
+			str \
 			# util \
 			# dict
 LIBS	=	$(addprefix $(LIBDIR)/lib, $(MODULES:%=%.a)) 
@@ -35,7 +35,7 @@ all: $(NAME)
 
 $(NAME): $(LIBS)
 #	$(ECHO) -e "save\nend" >> $(NAME).mri
-	ar -rcT $(NAME) $(LIBS)
+	libtool -static -o $(NAME) $(LIBS)
 #	ar -M < $(NAME).mri
 
 $(OBJ):  | build
