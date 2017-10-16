@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libstr.h"
+#include "libmem.h"
 
 size_t	ft_strlcat(char *s1, const char *s2, size_t n)
 {

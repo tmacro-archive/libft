@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libio.h                                            :+:      :+:    :+:   */
+/*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/14 14:39:02 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/10/14 14:39:03 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/08/03 15:50:41 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/08/05 13:44:26 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBIO_H
-# define LIBIO_H
+#include "clct.h"
 
-# include <unistd.h>
+void	*memalloc(size_t len)
+{
+	void			*freshmeat;
 
-void				ft_putchar(char c);
-void				ft_putchar_fd(char c, int fd);
-void				ft_putstr(char const *s);
-void				ft_putstr_fd(char const *s, int fd);
-void				ft_putendl(char const *s);
-void				ft_putendl_fd(char const *s, int fd);
-void				ft_putnbr(int n);
-void				ft_putnbr_fd(int n, int fd);
+	freshmeat = (void*)malloc(len);
+	if (freshmeat == NULL)
+		return (NULL);
+	region_manip(freshmeat, 1, len);
+	return (freshmeat);
+}
 
-#endif
+int		memfree(void **addr)
+{
+	if (addr && region_manip(*addr, 2, 0) == 1)
+	{
+		free(*addr);
+		*addr = NULL;
+		return (1);
+	}
+	return (0);
+}

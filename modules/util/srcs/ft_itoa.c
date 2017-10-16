@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libutil.h"
+#include "libstr.h"
 
 static int	count_digits(int num)
 {

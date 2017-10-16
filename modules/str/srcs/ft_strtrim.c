@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "libstr.h"
+#include "libmem.h"
+#include "libutil.h"
 
 char	*ft_strtrim(char const *s)
 {

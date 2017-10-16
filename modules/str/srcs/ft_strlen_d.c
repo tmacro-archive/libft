@@ -12,10 +12,10 @@
 
 #include "libstr.h"
 
-int	ft_strlen_d(char const *s, char delim)
+size_t	ft_strlen_d(char const *s, char delim)
 {
 	char	*pos;
-	int		len;
+	size_t	len;
 
 	pos = (char*)s;
 	len = 0;

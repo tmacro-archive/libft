@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   log.c                                              :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/05 13:26:35 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/08/05 13:29:52 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/06/08 21:42:42 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/06/11 12:36:08 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "clct.h"
-#include <stdio.h>
+#include "libutil.h"
 
-int	region_log(t_region **region)
+int	ft_atoi(char const *s)
 {
-	printf(":: region %p\n  size: %lu\n  ref_count: %i\n", (*region)->address, (*region)->size, (*region)->ref_count);
-	return (1);
+	intmax_t	res;
+	int			sign;
+	char		*pos;
+
+	pos = (char*)s;
+	sign = 1;
+	res = 0;
+	while (*pos == ' ' || (*pos >= 9 && *pos <= 13))
+		pos++;
+	if (*pos == '-')
+		sign = -1;
+	if (*pos == '+' || *pos == '-')
+		pos++;
+	pos--;
+	while (*++pos)
+		if (ft_isdigit(*pos))
+			res = res * 10 + (*pos - '0');
+		else
+			break ;
+	res *= sign;
+	return ((int)res);
 }

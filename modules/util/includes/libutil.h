@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   libutil.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/07 10:52:50 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/06/07 10:56:05 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/10/14 14:43:57 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/10/14 14:43:58 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBUTIL_H
+# define LIBUTIL_H
 
-int	ft_isalnum(int c)
-{
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (1);
-	return (0);
-}
+# include "inttypes.h"
+# include "string.h"
+int		ft_atoi(char const *s);
+char	*ft_ctrim(char const *s, char c);
+int		ft_isalnum(int c);
+int		ft_isalpha(int c);
+int		ft_isascii(int c);
+int		ft_isdigit(int c);
+int		ft_isprint(int c);
+int		ft_isws(int c);
+char	*ft_itoa(int n);
+#endif

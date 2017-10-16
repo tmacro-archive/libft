@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libstr.h"
+#include "libmem.h"
 
 static int	ft_splitcnt(char const *s, char c)
 {

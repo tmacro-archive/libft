@@ -45,7 +45,7 @@ int	ref_clean(t_region **region)
 {
 	t_region *tmp;
 	t_region *f;
-	
+
 	tmp = (*region)->next;
 	printf("clean: %p, %p\n", (*region)->next, (*region)->address);
 	f = (*region)->address;
@@ -55,4 +55,3 @@ int	ref_clean(t_region **region)
 	*region = tmp;
 	return (1);
 }
-

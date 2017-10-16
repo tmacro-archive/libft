@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libutil.h"
+#include "libstr.h"
 
 char	*ft_ctrim(char const *s, char c)
 {

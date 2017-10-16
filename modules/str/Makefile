@@ -15,9 +15,9 @@ CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
 SRCDIR	= srcs
 OBJDIR	= build
-OUTPUT	= libs
-INCLUDE	= -I includes
-
+OUTPUT	= ../libs
+INCLUDE	= -I includes -I ../mem/includes -I ../clct/includes -I ../util/includes
+LIBS	= -L $(OUTPUT) -lmem -lclct -lutil
 include module.mak
 
 OBJ		= $(SRC:%.c=$(OBJDIR)/%.o)
@@ -36,9 +36,7 @@ build:
 	@mkdir -p $@
 
 $(OUTPUT):
-ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
 	@mkdir -p $@
-endif
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
@@ -47,10 +45,6 @@ clean:
 	@rm -rf $(OBJDIR)
 
 fclean: clean
-ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
-	@rm -rf $(OUTPUT)
-else
 	@rm -f $(OUTPUT)/$(NAME)
-endif
 
 re: fclean all

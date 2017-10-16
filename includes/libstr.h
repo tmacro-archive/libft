@@ -16,11 +16,9 @@
 # include <stdlib.h>
 
 char	*ft_strnew(size_t size);
-char	*ft_strnew_d(char const *s, char c);
 void	ft_strdel(char **as);
 void	ft_strclr(char *s);
 size_t	ft_strlen(char *s);
-size_t	ft_strlen_d(char const *s, char delim);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strmap(char const *s, char (*f)(char));
