@@ -24,8 +24,8 @@ clean:
 	@make -C modules clean
 
 fclean:
-	@make -C modules fclean
 	@rm -f $(NAME)
+	@make -C modules fclean
 
 re: fclean $(NAME)
 

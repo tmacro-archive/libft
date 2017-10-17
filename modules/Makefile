@@ -48,12 +48,11 @@ $(LIBDIR)/lib%.a: ./%
 	@make -C $<
 
 clean:
-	@rm -f $(NAME).mri
 	@for mod in $(MODULES); do \
 		make -sC $$mod clean ; \
 	done
 
-fclean: clean
+fclean:
 	@rm -f $(NAME)
 	@for mod in $(MODULES); do \
 		make -sC $$mod fclean ; \
