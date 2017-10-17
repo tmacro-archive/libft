@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <unistd.h>
+# include "fdict.h"
 
 # define RM_ALLC 1
 # define RM_FREE 2
@@ -33,7 +34,6 @@
 # define IF_RET(q, v, ret) if (q == v) return (ret)
 # define FREE_DUO(x,y) free(x); free(y);
 
-# include "fdict.h"
 
 typedef struct		s_region
 {
