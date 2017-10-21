@@ -12,6 +12,7 @@
 
 #include "libstr.h"
 #include "libmem.h"
+#include "clct.h"
 
 static int	ft_splitcnt(char const *s, char c)
 {
@@ -45,7 +46,7 @@ char		**ft_strsplit(char const *s, char c)
 
 	NULL_GUARD((pos = (char*)s));
 	ERR_CHECK((len = ft_splitcnt(s, c) + 1), -1);
-	NULL_GUARD((results = (char**)ft_memalloc(len * sizeof(char*))));
+	NULL_GUARD((results = (char**)memalloc(len * sizeof(char*))));
 	rpos = results;
 	while (*pos)
 	{

@@ -20,7 +20,7 @@ void	log_stats(t_dict r)
 	clct_putstr("\t::\n::\tstored: ");
 	clct_putulong(r->stored);
 	clct_putstr("\t::\n::\tload: ");
-	clct_putulong((unsigned long)(((float)(r->stored) / (float)(r->size)) * 10));
+	clct_putulong((t_ulong)(((float)(r->stored) / (float)(r->size)) * 10));
 	clct_putstr("%\t::\n");
 }
 

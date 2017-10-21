@@ -12,8 +12,7 @@
 
 #include "clct.h"
 
-void	*prof_manu
-void prof_start(char *tag, int line, char *file)
+void	prof_start(char *tag, int line, char *file)
 {
 	static t_profile	**profiles;
 	static size_t		depth;
@@ -32,10 +31,9 @@ void prof_start(char *tag, int line, char *file)
 	tmp->line = line;
 	tmp->start = microtime();
 	depth++;
-	profiles[depth] = tmp;	
+	profiles[depth] = tmp;
 }
 
-void	prof_end()
+void	prof_end(void)
 {
-
 }

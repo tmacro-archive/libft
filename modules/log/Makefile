@@ -16,7 +16,8 @@ CFLAGS	= -Wall -Werror -Wextra -g -fsanitize=address
 SRCDIR	= srcs
 OBJDIR	= build
 OUTPUT	= ../libs
-INCLUDE	= -I includes
+INCLUDE	= -I ./includes -I ../str/includes -I ../dict/includes -I ../mem/includes -I ../clct/includes -I ../io/includes
+LIBS	= -L ../libs -lstr
 
 include module.mak
 
@@ -36,7 +37,9 @@ build:
 	@mkdir -p $@
 
 $(OUTPUT):
+ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
 	@mkdir -p $@
+endif
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
@@ -45,6 +48,10 @@ clean:
 	@rm -rf $(OBJDIR)
 
 fclean: clean
+ifeq (0, $(shell [[ -L ./$(OUTPUT) ]] && echo 1 || echo 0))
+	rm -rf $(OUTPUT)
+else
 	rm -f $(OUTPUT)/$(NAME)
+endif
 
 re: fclean all

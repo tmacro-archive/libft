@@ -12,10 +12,15 @@
 
 NAME = libft.a
 
+.PHONY = all clean fclean re headers
+
 all: $(NAME) 
 
-$(NAME): modules/libmcro.a
+$(NAME): modules/libmcro.a headers
 	@cp ./modules/libmcro.a ./libft.a
+
+headers:
+	@cp modules/*/includes/* includes/
 
 modules/libmcro.a:
 	@make -C modules

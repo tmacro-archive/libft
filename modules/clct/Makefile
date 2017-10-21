@@ -12,7 +12,7 @@
 
 ECHO	= @echo
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g -fsanitize=address
 SRCDIR	= srcs
 OBJDIR	= build
 OUTPUT	= ../libs

@@ -12,12 +12,13 @@
 
 #include "libstr.h"
 #include "libmem.h"
+#include "clct.h"
 
 char	*ft_strnew(size_t size)
 {
 	char	*freshmeat;
 
-	freshmeat = ft_memalloc(size + sizeof(char));
+	freshmeat = memalloc(size + sizeof(char));
 	if (freshmeat == NULL)
 		return (NULL);
 	ft_bzero(freshmeat, size + sizeof(char));

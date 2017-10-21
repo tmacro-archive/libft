@@ -34,7 +34,6 @@
 # define IF_RET(q, v, ret) if (q == v) return (ret)
 # define FREE_DUO(x,y) free(x); free(y);
 
-
 typedef struct		s_region
 {
 	void			*address;

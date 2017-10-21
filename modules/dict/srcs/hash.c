@@ -1,27 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libio.h                                            :+:      :+:    :+:   */
+/*   clct_hash.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmckinno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/14 14:39:02 by tmckinno          #+#    #+#             */
-/*   Updated: 2017/10/14 14:39:03 by tmckinno         ###   ########.fr       */
+/*   Created: 2017/08/10 14:52:49 by tmckinno          #+#    #+#             */
+/*   Updated: 2017/08/13 13:26:45 by tmckinno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBIO_H
-# define LIBIO_H
+#include "fdict.h"
 
-# include <unistd.h>
+t_ulong	hash_ptr(void *value)
+{
+	t_ulong	hash;
 
-void				ft_putchar(char c);
-void				ft_putchar_fd(char c, int fd);
-void				ft_putstr(char const *s);
-void				ft_putstr_fd(char const *s, int fd);
-void				ft_putendl(char const *s);
-void				ft_putendl_fd(char const *s, int fd);
-void				ft_putnbr(int n);
-void				ft_putnbr_fd(int n, int fd);
+	hash = (t_ulong)value;
+	return (hash);
+}
 
-#endif
+t_ulong	hash_str(void *value)
+{
+	t_ulong	hash;
+	char	*pos;
+
+	hash = 0;
+	pos = (char*)value;
+	while (*pos)
+	{
+		hash *= 97 * (unsigned char)(*pos);
+		pos++;
+	}
+	return (hash);
+}
+
+t_ulong	hash_int(void *value)
+{
+	int		key;
+	t_ulong	hash;
+
+	key = *(int*)value;
+	hash = (t_ulong)key;
+	return (hash);
+}
