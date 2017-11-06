@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libmem.h"
+#include "macs.h"
 
 void	*ft_memccpy(void *s1, void const *s2, int c, size_t n)
 {

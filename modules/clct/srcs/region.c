@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "clct.h"
+#include "macs.h"
 
 int	region_manip(void *addr, int mode, size_t len)
 {
@@ -18,12 +19,12 @@ int	region_manip(void *addr, int mode, size_t len)
 
 	if (!regions)
 		regions = VDICT;
-	IF_RET(RM_ALLC, mode, region_add(regions, addr, len));
-	IF_RET(RM_FREE, mode, region_rem(regions, addr));
-	IF_RET(RM_RINC, mode, ref_inc(regions, addr));
-	IF_RET(RM_RDEC, mode, ref_dec(regions, addr));
-	IF_RET(RM_RSWP, mode, ref_sweep(regions));
-	IF_RET(RM_RLOG, mode, region_log(regions));
+	IF_RET((RM_ALLC == mode), region_add(regions, addr, len));
+	IF_RET((RM_FREE == mode), region_rem(regions, addr));
+	IF_RET((RM_RINC == mode), ref_inc(regions, addr));
+	IF_RET((RM_RDEC == mode), ref_dec(regions, addr));
+	IF_RET((RM_RSWP == mode), ref_sweep(regions));
+	IF_RET((RM_RLOG == mode), region_log(regions));
 	if (RM_RCLN == mode)
 	{
 		ref_clean(regions);

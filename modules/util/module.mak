@@ -7,4 +7,6 @@ SRC     =   ft_atoi.c \
             ft_ctrim.c \
             ft_isalpha.c \
             ft_isdigit.c \
-            ft_isws.c
+            ft_isws.c \
+            queue.c \
+            lock.c

@@ -4,3 +4,5 @@ TODO
 *.un*
 libft.a
 *test*
+libmcro.a
+modules/libs

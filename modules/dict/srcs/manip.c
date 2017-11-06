@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdict.h"
+#include "clct.h"
 
 void	*dict_get(t_dict dict, void *key)
 {
@@ -31,7 +32,7 @@ void	dict_set(t_dict dict, void *key, void *value)
 	t_fdict_el	*e;
 	t_ulong		hash;
 
-	e = memmalloc(sizeof(t_fdict_el));
+	e = memalloc(sizeof(t_fdict_el));
 	e->key = key;
 	e->value = value;
 	hash = dict->hasher(key) % dict->size;

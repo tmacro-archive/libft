@@ -16,7 +16,7 @@ CFLAGS	= -Wall -Werror -Wextra -g -fsanitize=address
 SRCDIR	= srcs
 OBJDIR	= build
 OUTPUT	= ../libs
-INCLUDE	= -I includes
+INCLUDE	= -I includes -I ../../includes
 
 include module.mak
 

@@ -15,13 +15,16 @@
 
 void	log_stats(t_dict r)
 {
-	clct_putstr("::\tclct stats\t::\n::\tsize: ");
+	clct_putstr("::\tclct stats\t\t\t\t::\n");
+	clct_putstr("::----------------------------------------------::\n");
+	clct_putstr("::\thash table size: ");
 	clct_putulong(r->size);
-	clct_putstr("\t::\n::\tstored: ");
+	clct_putstr("\t\t\t::\n::\telements stored: ");
 	clct_putulong(r->stored);
-	clct_putstr("\t::\n::\tload: ");
+	clct_putstr("\t\t\t::\n::\t\t   load: ");
 	clct_putulong((t_ulong)(((float)(r->stored) / (float)(r->size)) * 10));
-	clct_putstr("%\t::\n");
+	clct_putstr("%\t\t\t::\n");
+	clct_putstr("::----------------------------------------------::\n");	
 }
 
 void	log_region(t_region *region)
@@ -51,10 +54,12 @@ int		region_log(t_dict regions)
 	size_t	allocd;
 
 	allocd = 0;
+	clct_putstr("::==============================================::\n");
 	log_stats(regions);
 	dict_iter(regions, &logger, &allocd);
 	clct_putstr("::\tTotal memory allocated: ");
 	clct_putulong(allocd);
-	clct_putstr("\t::\n");
+	clct_putstr(" bytes\t::\n");
+	clct_putstr("::==============================================::\n");
 	return (1);
 }

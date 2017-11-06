@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdict.h"
+#include "clct.h"
 
 static t_dict	internal_dict_create(size_t size, t_hasher hasher)
 {

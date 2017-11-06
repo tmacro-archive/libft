@@ -16,6 +16,17 @@
 # include <time.h>
 # include "libmem.h"
 
+#ifndef DEFAULT_LOGGER
+# define DEFAULT_LOGGER "logr"
+#endif
+
+# define LOG(msg, lvl) (logr(get_logger(DEFAULT_LOGGER, 0), msg, lvl))
+# define DEBUG(msg) LOG(msg, 0)
+# define INFO(msg) LOG(msg, 10)
+# define WARN(msg) LOG(msg, 20)
+# define ERROR(msg) LOG(msg, 30)
+# define CRIT(msg) LOG(msg, 40)
+
 struct					s_logger
 {
 	char	*tag;

@@ -20,8 +20,10 @@ MODULES	=	clct \
 			mem \
 			io \
 			str \
-			util
-			# dict
+			util \
+			dict \
+			logr
+
 LIBDIR	=	libs
 LIBS	=	$(addprefix $(LIBDIR)/lib, $(MODULES:%=%.a)) 
 OBJ		= 	$(SRC:%.c=$(OBJDIR)/%.o)

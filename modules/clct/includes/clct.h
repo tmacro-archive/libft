@@ -31,7 +31,6 @@
 # define REF_LOG region_manip(NULL, RM_RLOG, 0)
 # define REF_SWP region_manip(NULL, RM_RSWP, 0)
 # define REF_CLN region_manip(NULL, RM_RCLN, 0)
-# define IF_RET(q, v, ret) if (q == v) return (ret)
 # define FREE_DUO(x,y) free(x); free(y);
 
 typedef struct		s_region
