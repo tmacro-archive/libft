@@ -13,9 +13,9 @@
 #include "clct.h"
 #include "macs.h"
 
-int	region_manip(void *addr, int mode, size_t len)
+int	region_manip_inner(void *addr, int mode, size_t len)
 {
-	static t_dict regions;
+	static t_dict 			regions;
 
 	if (!regions)
 		regions = VDICT;
@@ -35,6 +35,28 @@ int	region_manip(void *addr, int mode, size_t len)
 	return (-1);
 }
 
+int	region_manip(void *addr, int mode, size_t len)
+{
+	static pthread_mutex_t	lock;
+	static int				flag;
+	int						ret;
+
+	if (!flag)
+	{
+		pthread_mutex_init(&lock, NULL);
+		flag = 1;
+	}
+	pthread_mutex_lock(&lock);
+	if (mode == RM_RNEW)
+	{
+		ret = region_manip_inner(addr, RM_ALLC, len);
+		ret = region_manip_inner(addr, RM_RINC, 0);
+	}
+	else
+		ret = region_manip_inner(addr, mode, len);
+	pthread_mutex_unlock(&lock);
+	return (ret);
+}
 int	region_add(t_dict regions, void *addr, size_t len)
 {
 	t_region *new;

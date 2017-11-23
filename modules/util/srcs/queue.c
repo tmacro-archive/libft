@@ -38,7 +38,7 @@ t_q_elem	create_q_el(void *data)
 
 	NULL_GUARD((fresh = (t_q_elem)memalloc(sizeof(struct s_q_elem))));
 	fresh->next = NULL;
-	fresh->data = data;
+	REF_INC((fresh->data = data));
 	return (fresh);
 }
 
@@ -47,14 +47,13 @@ int		enqueue(t_queue q, void *data, int block)
 	int			fail;
 	t_q_elem	el;
 
-	printf("enq addr: %p\n", &q->lock);
 	if (block)
 		fail = pthread_mutex_lock(&q->lock);
 	else
 		fail = pthread_mutex_trylock(&q->lock);
 	if (!fail)
 	{
-		el = create_q_el(data);
+		REF_INC((el = create_q_el(data)));
 		if (!q->head)
 		{
 			q->head = el;
@@ -69,8 +68,6 @@ int		enqueue(t_queue q, void *data, int block)
 		pthread_mutex_unlock(&q->lock);
 		return (1);
 	}
-	// printf("%s\n", strerror(fail));
-	printf("failed to enqueue item with error: %i\n", fail);
 	return (0);
 }
 
@@ -79,7 +76,6 @@ void		*dequeue(t_queue q, int block)
 	int			fail;
 	t_q_elem	el;
 	
-	// printf("deq addr: %p\n", &q->lock);
 	if (block)
 		fail = pthread_mutex_lock(&q->lock);
 	else
@@ -97,10 +93,12 @@ void		*dequeue(t_queue q, int block)
 		}
 		pthread_mutex_unlock(&q->lock);
 		if (el)
+		{
+			REF_DEC(el->data);
+			REF_DEC(el);
 			return (el->data);
+		};
 	}
-	// printf("failed to dequeue item with error %i\n", fail);
-	// printf("%s\n", strerror(fail));
 	return (NULL);
 }
 

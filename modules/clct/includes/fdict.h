@@ -13,6 +13,7 @@
 #ifndef FDICT_H
 # define FDICT_H
 # include <stdlib.h>
+# include <pthread.h>
 
 # define FDICT_GROWTH_FACTOR 2
 # define FDICT_INITIAL_SIZE 1024
@@ -46,6 +47,7 @@ struct					s_fdict
 	size_t				stored;
 	t_hasher			hasher;
 	struct s_fdict_el	**buckets;
+	pthread_mutex_t		lock;
 };
 
 typedef struct s_fdict	*t_dict;

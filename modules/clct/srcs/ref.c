@@ -53,6 +53,7 @@ int	ref_sweep(t_dict regions)
 				*prev = e->next;
 				FREE_DUO(tmp->address, tmp);
 				free(e);
+				regions->stored--;
 				continue ;
 			}
 			prev = &((*prev)->next);

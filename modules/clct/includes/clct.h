@@ -25,7 +25,9 @@
 # define RM_RLOG 5
 # define RM_RSWP 6
 # define RM_RCLN 7
+# define RM_RNEW 8
 # define SWEEP_FREQ 100042
+# define REF_ADD(addr, size) region_manip(addr, RM_RNEW, size)
 # define REF_INC(addr) region_manip(addr, RM_RINC, 0)
 # define REF_DEC(addr) region_manip(addr, RM_RDEC, 0)
 # define REF_LOG region_manip(NULL, RM_RLOG, 0)
@@ -50,6 +52,7 @@ typedef struct		s_profile
 }					t_profile;
 
 void				*memalloc(size_t len);
+void				*memalloc_inc(size_t len);
 int					memfree(void **addr);
 int					region_manip(void *addr, int mode, size_t len);
 int					region_add(t_dict regions, void *addr, size_t len);

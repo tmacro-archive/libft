@@ -19,13 +19,24 @@ void	*memalloc(size_t len)
 	freshmeat = (void*)malloc(len);
 	if (freshmeat == NULL)
 		return (NULL);
-	region_manip(freshmeat, 1, len);
+	region_manip(freshmeat, RM_ALLC, len);
+	return (freshmeat);
+}
+
+void	*memalloc_inc(size_t len)
+{
+	void			*freshmeat;
+
+	freshmeat = (void*)malloc(len);
+	if (freshmeat == NULL)
+		return (NULL);
+	region_manip(freshmeat, RM_RNEW, len);
 	return (freshmeat);
 }
 
 int		memfree(void **addr)
 {
-	if (addr && region_manip(*addr, 2, 0) == 1)
+	if (addr && region_manip(*addr, RM_FREE, 0) == 1)
 	{
 		free(*addr);
 		*addr = NULL;

@@ -21,8 +21,8 @@ MODULES	=	clct \
 			io \
 			str \
 			util \
-			dict \
-			logr
+			dict 
+			# logr
 
 LIBDIR	=	libs
 LIBS	=	$(addprefix $(LIBDIR)/lib, $(MODULES:%=%.a)) 

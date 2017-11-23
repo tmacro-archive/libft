@@ -12,7 +12,7 @@
 
 #include "clct.h"
 #include "fdict.h"
-
+#include <stdio.h>
 void	log_stats(t_dict r)
 {
 	clct_putstr("::\tclct stats\t\t\t\t::\n");

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdict.h"
-
+#include <stdio.h>
 void	*dict_get(t_dict dict, void *key)
 {
 	t_fdict_el	*e;
@@ -40,6 +40,7 @@ void	dict_set(t_dict dict, void *key, void *value)
 	dict->stored++;
 	if (dict->stored >= dict->size * FDICT_MAX_LOAD)
 		dict_grow(dict);
+	
 }
 
 void	dict_rem(t_dict dict, void *key)
